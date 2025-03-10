@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from users.views import protected_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
@@ -26,4 +28,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
+    path('api/auth/', include('users.urls')),
+    path('protected/', protected_view, name='protected'),
 ]
